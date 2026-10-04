@@ -1,0 +1,23 @@
+# Raw and generated data
+*.csv
+*.zip
+*.7z
+*.db
+*.sqlite
+*.sqlite3
+
+# Excel temporary files
+~$*.xlsx
+
+# Credentials and environment files
+.env
+*.pem
+*.key
+credentials*
+secrets*
+
+# OS/editor clutter
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
