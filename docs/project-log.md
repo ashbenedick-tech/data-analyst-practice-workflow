@@ -35,3 +35,32 @@ This mirrors the first stages of a production data workflow: receive a file, pre
 - Practice joins, NULL handling, aggregates, and QA checks.
 - Add Oracle-specific SQL and introductory PL/SQL exercises.
 - Analyze selected outputs in Excel.
+
+
+## 2026-10-05 — Oracle Environment and CSV DDL Preview
+
+### Objective
+Connect to a real Oracle database from the Ubuntu/PuTTY environment and inspect how SQLcl would define the Kaggle CSV as an Oracle table before loading data.
+
+### Work Completed
+- Ran Oracle AI Database Free in Docker on Windows using WSL 2.
+- Confirmed Oracle listener availability on port `1521`.
+- Verified the Ubuntu VM could reach the Windows-hosted Oracle listener with `nc -vz 10.0.2.2 1521`.
+- Installed Oracle SQLcl 26.3.0 on Ubuntu with Java 21.
+- Connected from the PuTTY/Ubuntu shell to Oracle `FREEPDB1` as the `ANALYST_PRACTICE` schema.
+- Used SQLcl `LOAD ... SHOW_DDL` to inspect the proposed `ECOMMERCE_SALES` table definition without loading the CSV.
+- SQLcl detected **46 columns** and inferred Oracle data types including `VARCHAR2`, `DATE`, and `NUMBER`.
+- SQLcl detected the source date format as `RRRR-MM-DD`.
+- Reviewed inferred numeric precision/scale before creating the production-style practice table.
+
+### Skills Practiced
+- Oracle database connectivity
+- SQLcl
+- Oracle schemas and tablespaces
+- DDL inspection
+- CSV schema inference
+- Data type validation
+- Pre-load quality assurance
+
+### Analyst Relevance
+This exercise demonstrates a core data-loading control: inspect and validate the proposed table structure before inserting source records. It reduces the risk of loading data into incorrect data types or losing meaningful formatting such as postal-code leading zeros.
