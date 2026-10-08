@@ -64,3 +64,20 @@ Connect to a real Oracle database from the Ubuntu/PuTTY environment and inspect 
 
 ### Analyst Relevance
 This exercise demonstrates a core data-loading control: inspect and validate the proposed table structure before inserting source records. It reduces the risk of loading data into incorrect data types or losing meaningful formatting such as postal-code leading zeros.
+
+
+## 2026-10-08 — Create and Load ECOMMERCE_SALES
+
+### Objective
+Create a cleaned Oracle table from the validated CSV schema and load the source data into the existing table.
+
+### Work Completed
+- Manually created the `ECOMMERCE_SALES` table in the `ANALYST_PRACTICE` schema.
+- Used business-appropriate numeric definitions such as `NUMBER(12,2)` for financial fields after validating source ranges and floating-point artifacts.
+- Kept `PROFIT_MARGIN_PERCENTAGE` as `NUMBER(6,2)` after confirming a source range of -59.55 to 77.59 with no values over two decimal places.
+- Configured SQLcl load date handling for the source date format.
+- Loaded the public CSV into the existing Oracle table using SQLcl.
+- SQLcl processed **138,116 rows**, reported **0 rows in error**, and committed through row **138,116**.
+
+### Analyst Relevance
+This exercise mirrors a controlled data-load workflow: validate source structure, create an appropriate target schema, load the file, review load diagnostics, and reconcile database row counts back to the source.
